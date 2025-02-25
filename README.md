@@ -1,7 +1,7 @@
 # watch-that-picker
 ## create image
 ```
-docker build -t watch-that-picker -f docker/Dockerfile .
+docker build -t watch-that-picker .
 ```
 ## run container (example)
 ```
