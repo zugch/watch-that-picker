@@ -16,7 +16,7 @@ CRON_EXPRESSION = os.getenv("CRON_EXPRESSION", "*/5 * * * *")  # Default: alle 5
 
 scheduler = BlockingScheduler()
 
-def watch_that():
+def pick():
     try:
         response = requests.get(URL)
         response.raise_for_status()
@@ -34,7 +34,7 @@ def watch_that():
         logging.error(f"Fehler beim Abrufen der URL: {e}")
 
 # Job mit CronTrigger hinzufügen
-scheduler.add_job(watch_that, CronTrigger.from_crontab(CRON_EXPRESSION))
+scheduler.add_job(pick, CronTrigger.from_crontab(CRON_EXPRESSION))
 
 if __name__ == "__main__":
     logging.info(f"Starte Scheduler mit Cron-Ausdruck: {CRON_EXPRESSION}")
